@@ -1,0 +1,1079 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚfMvar __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+if (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { Settings } from '../model/Settings';
+import { ResponsiveUtil } from '../utils/ResponsiveUtil';
+class Index extends ViewV2 {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda, extraInfo) {
+        super(parent, elmtId, extraInfo);
+        this.responsive = ResponsiveUtil.getInstance();
+        this.content = 'æ¬¢è¿Žå­¦ä¹ é¸¿è’™å¼€å‘';
+        this.fontSize = 88;
+        this.fontSizeFlag = 'å°';
+        this.fontWeight = FontWeight.Regular;
+        this.selectedIndex = 0;
+        this.fontWeights = [FontWeight.Regular, FontWeight.Medium, FontWeight.Bold];
+        this.selectedSpeedIndex = 1;
+        this.marqueeSpeeds = [4, 8, 16];
+        this.speedNames = ['æ…¢', 'ä¸­', 'å¿«'];
+        this.isMirror = false;
+        this.selectedFontColorIndex = 0;
+        this.fontColors = ['#FFFFFF', '#000000', '#FFD700', '#00FF00', '#FF69B4', '#00FFFF'];
+        this.fontColorNames = ['ç™½è‰²', 'é»‘è‰²', 'é‡‘è‰²', 'ç»¿è‰²', 'ç²‰è‰²', 'é’è‰²'];
+        this.selectedThemeIndex = 0;
+        this.isNightMode = false;
+        this.gradientThemes = [
+            { colors: [['#013C9C', 0.0], ['#3066E4', 0.5], ['#43A1F4', 1.0]] },
+            { colors: [['#C9302C', 0.0], ['#E43661', 0.5], ['#F44336', 1.0]] },
+            { colors: [['#2E7D32', 0.0], ['#43A047', 0.5], ['#66BB6A', 1.0]] },
+            { colors: [['#F57C00', 0.0], ['#FF9800', 0.5], ['#FFB74D', 1.0]] },
+            { colors: [['#7B1FA2', 0.0], ['#9C27B0', 0.5], ['#BA68C8', 1.0]] },
+            { colors: [['#00838F', 0.0], ['#00ACC1', 0.5], ['#26C6DA', 1.0]] } // é’è‰²ä¸»é¢˜
+        ];
+        this.themeNames = ['è“è‰²', 'çº¢è‰²', 'ç»¿è‰²', 'æ©™è‰²', 'ç´«è‰²', 'é’è‰²'];
+        this.pathInfos = new NavPathStack();
+        this.finalizeConstruction();
+    }
+    resetStateVarsOnReuse(params) {
+        this.content = 'æ¬¢è¿Žå­¦ä¹ é¸¿è’™å¼€å‘';
+        this.fontSize = 88;
+        this.fontSizeFlag = 'å°';
+        this.fontWeight = FontWeight.Regular;
+        this.selectedIndex = 0;
+        this.selectedSpeedIndex = 1;
+        this.isMirror = false;
+        this.selectedFontColorIndex = 0;
+        this.selectedThemeIndex = 0;
+        this.isNightMode = false;
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Navigation.create(this.pathInfos, { moduleName: "entry", pagePath: "entry/src/main/ets/pages/Index", isUserCreateStack: true });
+            Navigation.mode(NavigationMode.Stack);
+            Navigation.hideToolBar(true);
+        }, Navigation);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+            Column.height('100%');
+            Column.background(this.isNightMode ? '#1C1C1E' : '#F1F3F5');
+            Column.alignItems(HorizontalAlign.Start);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 1. æ ‡é¢˜åŒº
+            Row.create();
+            // 1. æ ‡é¢˜åŒº
+            Row.width('100%');
+            // 1. æ ‡é¢˜åŒº
+            Row.height(this.responsive.scale(56));
+            // 1. æ ‡é¢˜åŒº
+            Row.padding({ left: this.responsive.getPadding(), right: this.responsive.getPadding() });
+            // 1. æ ‡é¢˜åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('æ‰‹æŒå¼¹å¹•');
+            Text.fontSize(this.responsive.scaleFont(26));
+            Text.fontColor(this.isNightMode ? '#FFFFFF' : '#000000');
+            Text.fontWeight(FontWeight.Bold);
+            Text.layoutWeight(1);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Image.create({ "id": 16777227, "type": 20000, params: [], "bundleName": "com.example.led", "moduleName": "entry" });
+            Image.width(this.responsive.scale(36));
+            Image.height(this.responsive.scale(36));
+            Image.borderRadius(this.responsive.scale(18));
+            Image.onClick(() => {
+                this.pathInfos.pushPathByName('Login', null);
+            });
+        }, Image);
+        // 1. æ ‡é¢˜åŒº
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 2. é¢„è§ˆåŒº
+            Column.create();
+            // 2. é¢„è§ˆåŒº
+            Column.width('100%');
+            // 2. é¢„è§ˆåŒº
+            Column.margin({ top: this.responsive.scale(28) });
+            // 2. é¢„è§ˆåŒº
+            Column.alignItems(HorizontalAlign.Start);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('é¢„è§ˆ');
+            Text.fontSize(this.responsive.scaleFont(14));
+            Text.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            Text.fontWeight(FontWeight.Medium);
+            Text.margin({ left: this.responsive.scale(28) });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.create();
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.width('100%');
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.height(this.responsive.scale(199));
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.backgroundColor(this.isNightMode ? '#2C2C2E' : '#E5E5EA');
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.padding({
+                top: this.responsive.scale(24),
+                right: this.responsive.getPadding(),
+                bottom: this.responsive.scale(24),
+                left: this.responsive.getPadding()
+            });
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.margin({ top: 8 });
+            // å¼¹å¹•å±•ç¤ºæ¡†
+            Column.alignItems(HorizontalAlign.Start);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row.create();
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row.width('100%');
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row.height('100%');
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row.linearGradient({
+                direction: GradientDirection.Right,
+                colors: this.gradientThemes[this.selectedThemeIndex].colors
+            });
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row.borderRadius(this.responsive.scale(16));
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row.justifyContent(FlexAlign.Center);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create(this.content);
+            Text.textOverflow({ overflow: TextOverflow.MARQUEE });
+            Text.marqueeOptions({
+                start: true,
+                step: this.marqueeSpeeds[this.selectedSpeedIndex] // æ»šåŠ¨é€Ÿåº¦
+            });
+            Text.fontSize(this.fontSize / 1.8);
+            Text.fontWeight(this.fontWeight);
+            Text.fontColor(this.fontColors[this.selectedFontColorIndex]);
+        }, Text);
+        Text.pop();
+        // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+        Row.pop();
+        // å¼¹å¹•å±•ç¤ºæ¡†
+        Column.pop();
+        // 2. é¢„è§ˆåŒº
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // 3. æ“ä½œåŒº
+            Scroll.create();
+            // 3. æ“ä½œåŒº
+            Scroll.scrollBar(BarState.Auto);
+            // 3. æ“ä½œåŒº
+            Scroll.edgeEffect(EdgeEffect.Spring);
+            // 3. æ“ä½œåŒº
+            Scroll.width('100%');
+            // 3. æ“ä½œåŒº
+            Scroll.layoutWeight(1);
+        }, Scroll);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+            Column.padding({
+                left: this.responsive.getPadding(),
+                right: this.responsive.getPadding()
+            });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // å¼¹å¹•å†…å®¹åŒº
+            Column.create();
+            // å¼¹å¹•å†…å®¹åŒº
+            Column.width('100%');
+            // å¼¹å¹•å†…å®¹åŒº
+            Column.alignItems(HorizontalAlign.Start);
+            // å¼¹å¹•å†…å®¹åŒº
+            Column.margin({
+                top: this.responsive.scale(28),
+                bottom: this.responsive.scale(28)
+            });
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('å¼¹å¹•å†…å®¹');
+            Text.fontSize(this.responsive.scaleFont(14));
+            Text.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            Text.fontWeight(FontWeight.Medium);
+            Text.margin({ left: this.responsive.scale(12) });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // è¾“å…¥æ¡†
+            TextArea.create({ text: this.content });
+            // è¾“å…¥æ¡†
+            TextArea.backgroundColor(this.isNightMode ? '#3A3A3C' : Color.White);
+            // è¾“å…¥æ¡†
+            TextArea.maxLength(50);
+            // è¾“å…¥æ¡†
+            TextArea.showCounter(true, // å¼€å¯ç»Ÿè®¡
+            {
+                thresholdPercentage: 1,
+                highlightBorder: true // è¾“å…¥å¿«æ»¡æ—¶ï¼Œè¾¹æ¡†ä¼šé«˜äº®æé†’
+            });
+            // è¾“å…¥æ¡†
+            TextArea.height(this.responsive.scale(72));
+            // è¾“å…¥æ¡†
+            TextArea.padding({
+                top: this.responsive.scale(8),
+                right: this.responsive.getPadding(),
+                bottom: this.responsive.scale(8),
+                left: this.responsive.getPadding()
+            });
+            // è¾“å…¥æ¡†
+            TextArea.margin({ top: this.responsive.scale(8) });
+            // è¾“å…¥æ¡†
+            TextArea.borderRadius(this.responsive.scale(16));
+            // è¾“å…¥æ¡†
+            TextArea.onChange((value) => {
+                this.content = value; // å°†å½“å‰å€¼èµ‹å€¼ç»™content
+            });
+        }, TextArea);
+        // å¼¹å¹•å†…å®¹åŒº
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // è®¾ç½®åŒº
+            Column.create();
+            // è®¾ç½®åŒº
+            Column.width('100%');
+            // è®¾ç½®åŒº
+            Column.alignItems(HorizontalAlign.Start);
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // æ ‡é¢˜
+            Text.create('æ˜¾ç¤ºè®¾ç½®');
+            // æ ‡é¢˜
+            Text.fontSize(this.responsive.scaleFont(14));
+            // æ ‡é¢˜
+            Text.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            // æ ‡é¢˜
+            Text.fontWeight(FontWeight.Medium);
+            // æ ‡é¢˜
+            Text.margin({
+                bottom: this.responsive.scale(8),
+                left: this.responsive.scale(12)
+            });
+        }, Text);
+        // æ ‡é¢˜
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Column.create();
+            Column.width('100%');
+            Column.padding({
+                left: this.responsive.scale(12),
+                right: this.responsive.scale(12),
+                top: this.responsive.scale(4),
+                bottom: this.responsive.scale(4)
+            });
+            Column.margin({ bottom: this.responsive.scale(12) });
+            Column.backgroundColor(this.isNightMode ? '#2C2C2E' : Color.White);
+            Column.borderRadius(this.responsive.scale(16));
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // å­—å·å¤§å°åŒº
+            Column.create();
+        }, Column);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Row.create();
+            Row.width('100%');
+            Row.height(this.responsive.scale(48));
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('å­—ä½“å¤§å°');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create(this.fontSizeFlag);
+            Text.fontSize(this.responsive.scaleFont(14));
+        }, Text);
+        Text.pop();
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Slider.create({
+                value: this.fontSize,
+                min: 88,
+                max: 248,
+                step: 80,
+                style: SliderStyle.InSet
+            });
+            Slider.width('calc(100% + 12vp)');
+            Slider.height(this.responsive.scale(40));
+            Slider.blockColor(Color.White);
+            Slider.trackColor('#F1F3F5');
+            Slider.selectedColor('#0A59F7');
+            Slider.showSteps(true);
+            Slider.onChange((value) => {
+                this.fontSize = value;
+                // æ ¹æ®å½“å‰fontSizeåŒ¹é…fontSizeFlag
+                if (this.fontSize === 88) {
+                    this.fontSizeFlag = 'å°';
+                }
+                else if (this.fontSize === 248) {
+                    this.fontSizeFlag = 'å¤§';
+                }
+                else {
+                    this.fontSizeFlag = 'ä¸­';
+                }
+            });
+        }, Slider);
+        // å­—å·å¤§å°åŒº
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // å­—ä½“ç²—ç»†åŒº
+            Row.create();
+            // å­—ä½“ç²—ç»†åŒº
+            Row.width('100%');
+            // å­—ä½“ç²—ç»†åŒº
+            Row.height(this.responsive.scale(48));
+            // å­—ä½“ç²—ç»†åŒº
+            Row.margin({ top: this.responsive.scale(12) });
+            // å­—ä½“ç²—ç»†åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('å­—ä½“ç²—ç»†');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Select.create([
+                { value: this.fontWeights[0].toString() },
+                { value: this.fontWeights[1].toString() },
+                { value: this.fontWeights[2].toString() }
+            ]);
+            Select.value(this.fontWeight.toString());
+            Select.selected(this.selectedIndex);
+            Select.backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF');
+            Select.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            Select.borderWidth(0);
+            Select.onSelect((index) => {
+                this.fontWeight = this.fontWeights[index]; // å°†é€‰ä¸­é¡¹èµ‹å€¼ç»™fontWeight
+                this.selectedIndex = index; // å°†é€‰ä¸­é¡¹çš„ç´¢å¼•èµ‹å€¼ç»™selectedIndex
+            });
+        }, Select);
+        Select.pop();
+        // å­—ä½“ç²—ç»†åŒº
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // æ»šåŠ¨é€Ÿåº¦åŒº
+            Row.create();
+            // æ»šåŠ¨é€Ÿåº¦åŒº
+            Row.width('100%');
+            // æ»šåŠ¨é€Ÿåº¦åŒº
+            Row.height(this.responsive.scale(48));
+            // æ»šåŠ¨é€Ÿåº¦åŒº
+            Row.margin({ top: this.responsive.scale(12) });
+            // æ»šåŠ¨é€Ÿåº¦åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('æ»šåŠ¨é€Ÿåº¦');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Select.create([
+                { value: this.speedNames[0] },
+                { value: this.speedNames[1] },
+                { value: this.speedNames[2] }
+            ]);
+            Select.value(this.speedNames[this.selectedSpeedIndex]);
+            Select.selected(this.selectedSpeedIndex);
+            Select.backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF');
+            Select.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            Select.borderWidth(0);
+            Select.onSelect((index) => {
+                this.selectedSpeedIndex = index;
+            });
+        }, Select);
+        Select.pop();
+        // æ»šåŠ¨é€Ÿåº¦åŒº
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // é•œåƒå¼€å…³åŒº
+            Row.create();
+            // é•œåƒå¼€å…³åŒº
+            Row.width('100%');
+            // é•œåƒå¼€å…³åŒº
+            Row.height(this.responsive.scale(48));
+            // é•œåƒå¼€å…³åŒº
+            Row.margin({ top: this.responsive.scale(12) });
+            // é•œåƒå¼€å…³åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('é•œåƒæ˜¾ç¤º');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Toggle.create({ type: ToggleType.Switch, isOn: this.isMirror });
+            Toggle.onChange((isOn) => {
+                this.isMirror = isOn;
+            });
+        }, Toggle);
+        Toggle.pop();
+        // é•œåƒå¼€å…³åŒº
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+            Row.create();
+            // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+            Row.width('100%');
+            // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+            Row.height(this.responsive.scale(48));
+            // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+            Row.margin({ top: this.responsive.scale(12) });
+            // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('å¤œé—´æ¨¡å¼');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Toggle.create({ type: ToggleType.Switch, isOn: this.isNightMode });
+            Toggle.onChange((isOn) => {
+                this.isNightMode = isOn;
+            });
+        }, Toggle);
+        Toggle.pop();
+        // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // æ–‡å­—é¢œè‰²åŒº
+            Row.create();
+            // æ–‡å­—é¢œè‰²åŒº
+            Row.width('100%');
+            // æ–‡å­—é¢œè‰²åŒº
+            Row.height(this.responsive.scale(48));
+            // æ–‡å­—é¢œè‰²åŒº
+            Row.margin({ top: this.responsive.scale(12) });
+            // æ–‡å­—é¢œè‰²åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('æ–‡å­—é¢œè‰²');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Select.create([
+                { value: this.fontColorNames[0] },
+                { value: this.fontColorNames[1] },
+                { value: this.fontColorNames[2] },
+                { value: this.fontColorNames[3] },
+                { value: this.fontColorNames[4] },
+                { value: this.fontColorNames[5] }
+            ]);
+            Select.value(this.fontColorNames[this.selectedFontColorIndex]);
+            Select.selected(this.selectedFontColorIndex);
+            Select.backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF');
+            Select.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            Select.borderWidth(0);
+            Select.onSelect((index) => {
+                this.selectedFontColorIndex = index;
+            });
+        }, Select);
+        Select.pop();
+        // æ–‡å­—é¢œè‰²åŒº
+        Row.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+            Row.create();
+            // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+            Row.width('100%');
+            // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+            Row.height(this.responsive.scale(48));
+            // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+            Row.margin({ top: this.responsive.scale(12) });
+            // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+            Row.justifyContent(FlexAlign.SpaceBetween);
+        }, Row);
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('èƒŒæ™¯é¢œè‰²');
+            Text.fontSize(this.responsive.scaleFont(16));
+            Text.fontWeight(FontWeight.Medium);
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Select.create([
+                { value: this.themeNames[0] },
+                { value: this.themeNames[1] },
+                { value: this.themeNames[2] },
+                { value: this.themeNames[3] },
+                { value: this.themeNames[4] },
+                { value: this.themeNames[5] }
+            ]);
+            Select.value(this.themeNames[this.selectedThemeIndex]);
+            Select.selected(this.selectedThemeIndex);
+            Select.backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF');
+            Select.fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000');
+            Select.borderWidth(0);
+            Select.onSelect((index) => {
+                this.selectedThemeIndex = index;
+            });
+        }, Select);
+        Select.pop();
+        // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+        Row.pop();
+        Column.pop();
+        // è®¾ç½®åŒº
+        Column.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Button.createWithLabel('æ˜¾ç¤ºå¼¹å¹•');
+            Button.height(this.responsive.scale(40));
+            Button.backgroundColor('#0A59F7');
+            Button.margin({ top: this.responsive.scale(32) });
+            Button.width('100%');
+            Button.onClick(() => {
+                // 1. æŠŠå½“å‰é¡µé¢çš„è®¾ç½®é¡¹ç»„è£…æˆSettingså¯¹è±¡
+                const settings = new Settings(this.content, this.fontSize, this.fontWeight, this.marqueeSpeeds[this.selectedSpeedIndex], this.isMirror, this.fontColors[this.selectedFontColorIndex], this.gradientThemes[this.selectedThemeIndex], this.isNightMode);
+                // 2. è·³è½¬ï¼šç¬¬ä¸€ä¸ªå‚æ•°æ˜¯è·¯ç”±è¡¨çš„nameï¼Œç¬¬äºŒä¸ªæ˜¯ä¼ é€’çš„å‚æ•°
+                this.pathInfos.pushPathByName('Led', settings);
+            });
+        }, Button);
+        Button.pop();
+        Column.pop();
+        // 3. æ“ä½œåŒº
+        Scroll.pop();
+        Column.pop();
+        Navigation.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+    static getEntryName() {
+        return "Index";
+    }
+}
+__decorate([
+    Local
+], Index.prototype, "content", void 0);
+__decorate([
+    Local
+], Index.prototype, "fontSize", void 0);
+__decorate([
+    Local
+], Index.prototype, "fontSizeFlag", void 0);
+__decorate([
+    Local
+], Index.prototype, "fontWeight", void 0);
+__decorate([
+    Local
+], Index.prototype, "selectedIndex", void 0);
+__decorate([
+    Local
+], Index.prototype, "selectedSpeedIndex", void 0);
+__decorate([
+    Local
+], Index.prototype, "isMirror", void 0);
+__decorate([
+    Local
+], Index.prototype, "selectedFontColorIndex", void 0);
+__decorate([
+    Local
+], Index.prototype, "selectedThemeIndex", void 0);
+__decorate([
+    Local
+], Index.prototype, "isNightMode", void 0);
+registerNamedRoute(() => new Index(undefined, {}), "", { bundleName: "com.example.led", moduleName: "entry", pagePath: "pages/Index", pageFullPath: "entry/src/main/ets/pages/Index", integratedHsp: "false", moduleType: "followWithHap" });
+//# sourceMappingURL=Index.js.mapÂ’ÙLD:\ossc2026\LED-master\4_AI\4_Complete\entry\src\main\ets\model\Settings.etsÙRD:\ossc2026\LED-master\4_AI\4_Complete\entry\src\main\ets\utils\ResponsiveUtil.etsÙID:\ossc2026\LED-master\4_AI\4_Complete\entry\src\main\ets\pages\Index.etsÔrB›ªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo°belongModulePath§checker¬shouldEmitJs¥entryÃÂÙ,D:\ossc2026\LED-master\4_AI\4_Complete\entryÙ&D:\ossc2026\LED-master\4_AI\4_Complete¥entry¥1.0.0Ô  Ù,D:\ossc2026\LED-master\4_AI\4_Complete\entryÔrCÜ ®¬getNodeCount²getIdentifierCount®getSymbolCount¬getTypeCountµgetInstantiationCountµgetRelationCacheSizes±isUndefinedSymbol±isArgumentsSymbol¯isUnknownSymbol¯getMergedSymbol®getDiagnostics´getGlobalDiagnostics´getRecursionIdentity¶getUnmatchedProperties¹getTypeOfSymbolAtLocation¯getTypeOfSymbolÙ(getSymbolsOfParameterPropertyDeclaration·getDeclaredTypeOfSymbol³getPropertiesOfType±getPropertyOfTypeÙ"getPrivateIdentifierPropertyOfType·getTypeOfPropertyOfType²getIndexInfoOfType³getIndexInfosOfTypeºgetIndexInfosOfIndexSymbol³getSignaturesOfType²getIndexTypeOfType¬getIndexType¬getBaseTypes¸getBaseTypeOfLiteralType®getWidenedType³getTypeFromTypeNode°getParameterTypeÙ$getParameterIdentifierNameAtPosition¸getPromisedTypeOfPromise®getAwaitedType¸getReturnTypeOfSignature®isNullableType¯getNullableType²getNonNullableType²getNonOptionalType°getTypeArguments®typeToTypeNodeÙ$indexInfoToIndexSignatureDeclaration¿signatureToSignatureDeclaration²symbolToEntityName²symbolToExpression¬symbolToNodeÙ!symbolToTypeParameterDeclarations¼symbolToParameterDeclarationºtypeParameterToDeclaration±getSymbolsInScope³getSymbolAtLocation·getIndexInfosAtLocationÙ!getShorthandAssignmentValueSymbolÙ#getExportSpecifierLocalTargetSymbol·getExportSymbolOfSymbol±getTypeAtLocationºgetTypeAtLocationForLinterÙ tryGetTypeAtLocationWithoutCheckºgetTypeOfAssignmentPatternÙ*getPropertySymbolOfDestructuringAssignment±signatureToString¬typeToString®symbolToStringµtypePredicateToString®writeSignature©writeType«writeSymbol²writeTypePredicate¼getAugmentedPropertiesOfType®getRootSymbols²getSymbolOfExpando±getContextualTypeÙ(getContextualTypeForObjectLiteralElementÙ#getContextualTypeForArgumentAtIndexÙ getContextualTypeForJsxAttribute²isContextSensitiveÙ!getTypeOfPropertyOfContextualTypeµgetFullyQualifiedNameÙ#tryGetResolvedSignatureWithoutCheck´getResolvedSignatureÙ/getResolvedSignatureForStringLiteralCompletionsÙ$getResolvedSignatureForSignatureHelpµgetExpandedParameters¹hasEffectiveRestParameterºcontainsArgumentsReference°getConstantValueµisValidPropertyAccessÙ#isValidPropertyAccessForCompletions»getSignatureFromDeclarationºisImplementationOfOverload¹getImmediateAliasedSymbol°getAliasedSymbol¯getEmitResolver²getExportsOfModule¿getExportsAndPropertiesOfModuleÙ forEachExportAndPropertyOfModule¯getSymbolWalker±getAmbientModules¹getJsxIntrinsicTagNamesAt³isOptionalParameter»tryGetMemberInModuleExportsÙ(tryGetMemberInModuleExportsAndProperties´tryFindAmbientModuleÙ(tryFindAmbientModuleWithoutAugmentations¯getApparentType¬getUnionType²isTypeAssignableTo³createAnonymousType¯createSignature¬createSymbol¯createIndexInfoªgetAnyType­getStringType­getNumberType±createPromiseType¯createArrayType¹getElementTypeOfArrayType®getBooleanType¬getFalseType«getTrueType«getVoidType°getUndefinedType«getNullType¯getESSymbolType¬getNeverType¯getOptionalType®getPromiseType²getPromiseLikeType´getAsyncIterableType²isSymbolAccessible«isArrayType«isTupleType¯isArrayLikeTypeÙ#isTypeInvalidDueToUnionDiscriminantºgetExactOptionalProperties¿getAllPossiblePropertiesOfTypesÙ(getSuggestedSymbolForNonexistentPropertyÙ#getSuggestionForNonexistentPropertyÙ,getSuggestedSymbolForNonexistentJSXAttributeÙ&getSuggestedSymbolForNonexistentSymbolÙ!getSuggestionForNonexistentSymbolÙ&getSuggestedSymbolForNonexistentModuleÙ!getSuggestionForNonexistentExportÙ+getSuggestedSymbolForNonexistentClassMember·getBaseConstraintOfType»getDefaultFromTypeParameter«resolveName¯getJsxNamespaceµgetJsxFragmentFactory¸getAccessibleSymbolChain»getTypePredicateOfSignature¹resolveExternalModuleName»resolveExternalModuleSymbol°tryGetThisTypeAt¹getTypeArgumentConstraint¸getSuggestionDiagnostics¸runWithCancellationTokenÙ3getLocalTypeParametersOfClassOrInterfaceOrTypeAlias´isDeclarationVisible´isPropertyAccessible»getTypeOnlyAliasDeclaration¿getMemberOverrideModifierStatusÙ!isTypeParameterPossiblyReferenced²getConstEnumRelate´clearConstEnumRelateµdeleteConstEnumRelateÙ$getTypeArgumentsForResolvedSignatureµgetCheckedSourceFilesÙ"collectHaveTsNoCheckFilesForLinter·clearQualifiedNameCache®isStaticRecord²isStaticSourceFileÔ  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  Ô  ÃÃÚG=/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { Settings, GradientColors } from '../model/Settings';
+import { ResponsiveUtil } from '../utils/ResponsiveUtil';
+
+@Entry
+@ComponentV2
+struct Index {
+  private responsive: ResponsiveUtil = ResponsiveUtil.getInstance();
+  // 1. å¼¹å¹•å†…å®¹ï¼ˆå­—ç¬¦ä¸²ç±»åž‹ï¼Œé»˜è®¤æ–‡å­—ï¼‰
+  @Local content: string = 'æ¬¢è¿Žå­¦ä¹ é¸¿è’™å¼€å‘';
+  // 2. å­—å·ï¼ˆæ•°å­—ç±»åž‹ï¼Œé»˜è®¤88ï¼‰
+  @Local fontSize: number = 88;
+  // å­—å·æ ‡è¯†ï¼ˆå°/ä¸­/å¤§ï¼ŒåŒæ­¥æ˜¾ç¤ºç»™ç”¨æˆ·ï¼‰
+  @Local fontSizeFlag: string = 'å°';
+  // 3. å­—ä½“ç²—ç»†ï¼ˆæžšä¸¾ç±»åž‹ï¼Œé»˜è®¤å¸¸è§„ï¼‰
+  @Local fontWeight: FontWeight = FontWeight.Regular;
+  // å­—ä½“ç²—ç»†é€‰ä¸­é¡¹
+  @Local selectedIndex: number = 0;
+  // å­—ä½“ç²—ç»†æ•°ç»„ï¼ˆå¸¸è§„ã€ä¸­ç­‰ã€åŠ ç²—ï¼‰
+  fontWeights: FontWeight[] = [FontWeight.Regular, FontWeight.Medium, FontWeight.Bold];
+  // 4. æ»šåŠ¨é€Ÿåº¦
+  @Local selectedSpeedIndex: number = 1;
+  // æ»šåŠ¨é€Ÿåº¦æ•°ç»„ï¼ˆæ…¢ã€ä¸­ã€å¿«ï¼‰
+  marqueeSpeeds: number[] = [4, 8, 16];
+  speedNames: string[] = ['æ…¢', 'ä¸­', 'å¿«'];
+  // 5. é•œåƒå¼€å…³
+  @Local isMirror: boolean = false;
+  // 6. æ–‡å­—é¢œè‰²
+  @Local selectedFontColorIndex: number = 0;
+  fontColors: string[] = ['#FFFFFF', '#000000', '#FFD700', '#00FF00', '#FF69B4', '#00FFFF'];
+  fontColorNames: string[] = ['ç™½è‰²', 'é»‘è‰²', 'é‡‘è‰²', 'ç»¿è‰²', 'ç²‰è‰²', 'é’è‰²'];
+  // 7. èƒŒæ™¯é¢œè‰²ä¸»é¢˜
+  @Local selectedThemeIndex: number = 0;
+  // 8. å¤œé—´æ¨¡å¼
+  @Local isNightMode: boolean = false;
+  // é¢„å®šä¹‰çš„èƒŒæ™¯é¢œè‰²ä¸»é¢˜
+  gradientThemes: GradientColors[] = [
+    { colors: [['#013C9C', 0.0], ['#3066E4', 0.5], ['#43A1F4', 1.0]] }, // è“è‰²ä¸»é¢˜ï¼ˆé»˜è®¤ï¼‰
+    { colors: [['#C9302C', 0.0], ['#E43661', 0.5], ['#F44336', 1.0]] }, // çº¢è‰²ä¸»é¢˜
+    { colors: [['#2E7D32', 0.0], ['#43A047', 0.5], ['#66BB6A', 1.0]] }, // ç»¿è‰²ä¸»é¢˜
+    { colors: [['#F57C00', 0.0], ['#FF9800', 0.5], ['#FFB74D', 1.0]] }, // æ©™è‰²ä¸»é¢˜
+    { colors: [['#7B1FA2', 0.0], ['#9C27B0', 0.5], ['#BA68C8', 1.0]] }, // ç´«è‰²ä¸»é¢˜
+    { colors: [['#00838F', 0.0], ['#00ACC1', 0.5], ['#26C6DA', 1.0]] }  // é’è‰²ä¸»é¢˜
+  ];
+  themeNames: string[] = ['è“è‰²', 'çº¢è‰²', 'ç»¿è‰²', 'æ©™è‰²', 'ç´«è‰²', 'é’è‰²'];
+  // å¯¼èˆªæŽ§åˆ¶å™¨
+  pathInfos: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pathInfos) { // ä½¿ç”¨Navigationä½œä¸ºé¦–é¡µçš„æ ¹å®¹å™¨ï¼Œå¹¶ç»‘å®šå¯¼èˆªæŽ§åˆ¶å™¨
+      Column() {
+        // 1. æ ‡é¢˜åŒº
+        Row() {
+          Text('æ‰‹æŒå¼¹å¹•')
+            .fontSize(this.responsive.scaleFont(26))
+            .fontColor(this.isNightMode ? '#FFFFFF' : '#000000')
+            .fontWeight(FontWeight.Bold)
+            .layoutWeight(1)
+
+          Image($r('app.media.startIcon'))
+            .width(this.responsive.scale(36))
+            .height(this.responsive.scale(36))
+            .borderRadius(this.responsive.scale(18))
+            .onClick(() => {
+              this.pathInfos.pushPathByName('Login', null);
+            })
+        }
+        .width('100%')
+        .height(this.responsive.scale(56))
+        .padding({ left: this.responsive.getPadding(), right: this.responsive.getPadding() })
+        .justifyContent(FlexAlign.SpaceBetween)
+        // 2. é¢„è§ˆåŒº
+        Column() {
+          Text('é¢„è§ˆ')
+            .fontSize(this.responsive.scaleFont(14))
+            .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+            .fontWeight(FontWeight.Medium)
+            .margin({ left: this.responsive.scale(28) })
+
+          // å¼¹å¹•å±•ç¤ºæ¡†
+          Column() {
+            // å¼¹å¹•æ»šåŠ¨åŒºåŸŸ
+            Row() {
+              Text(this.content)
+              // ç¬¬1æ­¥ï¼šå¼€å¯è·‘é©¬ç¯æ»šåŠ¨æ¨¡å¼
+                .textOverflow({ overflow: TextOverflow.MARQUEE }) // TextOverflow.MARQUEEè¡¨ç¤ºTextç»„ä»¶çš„æ–‡å­—æº¢å‡ºä»¥è·‘é©¬ç¯æ¨¡å¼å¤„ç†
+                // ç¬¬2æ­¥ï¼šé…ç½®æ»šåŠ¨çš„è§„åˆ™
+                .marqueeOptions({
+                  start: true, // å…³é”®ï¼šæ˜¯å¦å¯åŠ¨æ»šåŠ¨ã€‚trueï¼šå¯åŠ¨æ»šåŠ¨ï¼›falseï¼šåœæ­¢æ»šåŠ¨
+                  step: this.marqueeSpeeds[this.selectedSpeedIndex] // æ»šåŠ¨é€Ÿåº¦
+                })
+                .fontSize(this.fontSize / 1.8) // ç»‘å®šå­—å·å˜é‡
+                .fontWeight(this.fontWeight) // å­—ä½“ç²—ç»†
+                .fontColor(this.fontColors[this.selectedFontColorIndex])
+            }
+            .width('100%')
+            .height('100%')
+            .linearGradient({
+              direction: GradientDirection.Right, // æ¸å˜æ–¹å‘
+              colors: this.gradientThemes[this.selectedThemeIndex].colors
+            })
+            .borderRadius(this.responsive.scale(16)) // è¾¹æ¡†çš„åœ†è§’åŠå¾„
+            .justifyContent(FlexAlign.Center) // è®¾ç½®æ–‡æœ¬å±…ä¸­
+          }
+          .width('100%')
+          .height(this.responsive.scale(199)) // å±•ç¤ºæ¡†é«˜åº¦
+          .backgroundColor(this.isNightMode ? '#2C2C2E' : '#E5E5EA')
+          .padding({
+            top: this.responsive.scale(24),
+            right: this.responsive.getPadding(),
+            bottom: this.responsive.scale(24),
+            left: this.responsive.getPadding()
+          }) // å†…è¾¹è·
+          .margin({ top: 8 }) // å¤–è¾¹è·ï¼ˆè·ç¦»â€œé¢„è§ˆâ€æ ‡é¢˜çš„é—´è·ï¼‰
+          .alignItems(HorizontalAlign.Start) // è®¾ç½®Columnå®¹å™¨å†…å®¹å·¦å¯¹é½
+        }
+        .width('100%')
+        .margin({ top: this.responsive.scale(28) })
+        .alignItems(HorizontalAlign.Start) // è®¾ç½®Columnå®¹å™¨çš„å†…å®¹å·¦å¯¹é½
+
+        // 3. æ“ä½œåŒº
+        Scroll() {
+          Column() {
+            // å¼¹å¹•å†…å®¹åŒº
+            Column() {
+              Text('å¼¹å¹•å†…å®¹')
+                .fontSize(this.responsive.scaleFont(14))
+                .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+                .fontWeight(FontWeight.Medium)
+                .margin({ left: this.responsive.scale(12) })
+
+              // è¾“å…¥æ¡†
+              TextArea({ text: this.content })
+                .backgroundColor(this.isNightMode ? '#3A3A3C' : Color.White)
+                .maxLength(50) // é™åˆ¶è¾“å…¥æ–‡æœ¬çš„ä¸ªæ•°ï¼Œæœ€å¤šè¾“å…¥50ä¸ªå­—
+                .showCounter(
+                  true, // å¼€å¯ç»Ÿè®¡
+                  {
+                    thresholdPercentage: 1, // å…¨ç¨‹æ˜¾ç¤ºç»Ÿè®¡ï¼ˆä¸ç”¨ç­‰å­—æ•°å¿«æ»¡æ‰å‡ºçŽ°ï¼‰
+                    highlightBorder: true // è¾“å…¥å¿«æ»¡æ—¶ï¼Œè¾¹æ¡†ä¼šé«˜äº®æé†’
+                  }
+                )
+                .height(this.responsive.scale(72)) // è¾“å…¥æ¡†é«˜åº¦
+                .padding({
+                  top: this.responsive.scale(8),
+                  right: this.responsive.getPadding(),
+                  bottom: this.responsive.scale(8),
+                  left: this.responsive.getPadding()
+                }) // è¾“å…¥æ¡†å†…éƒ¨çš„æ–‡å­—ï¼Œè·ç¦»è¾“å…¥æ¡†è¾¹ç¼˜çš„è·ç¦»
+                .margin({ top: this.responsive.scale(8) }) // è¾“å…¥æ¡†è·ç¦»ä¸Šæ–¹æ ‡é¢˜çš„é—´è·
+                .borderRadius(this.responsive.scale(16)) // è¾¹æ¡†çš„åœ†è§’åŠå¾„
+                .onChange((value: string) => { // ç”¨æˆ·ä¿®æ”¹è¾“å…¥æ¡†æ–‡æœ¬æ—¶è§¦å‘ï¼Œè¿”å›žå½“å‰å€¼
+                  this.content = value; // å°†å½“å‰å€¼èµ‹å€¼ç»™content
+                })
+            }
+            .width('100%')
+            .alignItems(HorizontalAlign.Start)
+            .margin({
+              top: this.responsive.scale(28),
+              bottom: this.responsive.scale(28)
+            })
+
+            // è®¾ç½®åŒº
+            Column() {
+              // æ ‡é¢˜
+              Text('æ˜¾ç¤ºè®¾ç½®')
+                .fontSize(this.responsive.scaleFont(14))
+                .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+                .fontWeight(FontWeight.Medium)
+                .margin({
+                  bottom: this.responsive.scale(8),
+                  left: this.responsive.scale(12)
+                })
+
+              Column() {
+                // å­—å·å¤§å°åŒº
+                Column() {
+                  Row() {
+                    Text('å­—ä½“å¤§å°')
+                      .fontSize(this.responsive.scaleFont(16))
+                      .fontWeight(FontWeight.Medium)
+                    Text(this.fontSizeFlag)
+                      .fontSize(this.responsive.scaleFont(14))
+                  }
+                  .width('100%')
+                  .height(this.responsive.scale(48))
+                  .justifyContent(FlexAlign.SpaceBetween)
+
+                  Slider({
+                    value: this.fontSize,
+                    min: 88,
+                    max: 248,
+                    step: 80,
+                    style: SliderStyle.InSet
+                  })
+                    .width('calc(100% + 12vp)')
+                    .height(this.responsive.scale(40))
+                    .blockColor(Color.White) // æ»‘å—èƒŒæ™¯è‰²
+                    .trackColor('#F1F3F5') // æ»‘è½¨èƒŒæ™¯è‰²
+                    .selectedColor('#0A59F7') // æ»‘è½¨çš„å·²æ»‘åŠ¨éƒ¨åˆ†èƒŒæ™¯è‰²
+                    .showSteps(true) // æ˜¾ç¤ºæ­¥é•¿åˆ»åº¦
+                    .onChange((value: number) => { // ç”¨æˆ·æ‹–åŠ¨æˆ–ç‚¹å‡»æ—¶è§¦å‘ï¼Œè¿”å›žå½“å‰æ»‘åŠ¨çš„è¿›åº¦å€¼
+                      this.fontSize = value;
+                      // æ ¹æ®å½“å‰fontSizeåŒ¹é…fontSizeFlag
+                      if (this.fontSize === 88) {
+                        this.fontSizeFlag = 'å°';
+                      } else if (this.fontSize === 248) {
+                        this.fontSizeFlag = 'å¤§';
+                      } else {
+                        this.fontSizeFlag = 'ä¸­';
+                      }
+                    })
+                }
+
+                // å­—ä½“ç²—ç»†åŒº
+                Row() {
+                  Text('å­—ä½“ç²—ç»†')
+                    .fontSize(this.responsive.scaleFont(16))
+                    .fontWeight(FontWeight.Medium)
+                  Select([
+                    { value: this.fontWeights[0].toString() },
+                    { value: this.fontWeights[1].toString() },
+                    { value: this.fontWeights[2].toString() }
+                  ])
+                    .value(this.fontWeight.toString())
+                    .selected(this.selectedIndex)
+                    .backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF')
+                    .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+                    .borderWidth(0)
+                    .onSelect((index: number) => { // é€‰ä¸­ä¸‹æ‹‰èœå•ä¸­æŸä¸€é¡¹æ—¶è§¦å‘ï¼Œè¿”å›žé€‰ä¸­é¡¹çš„ç´¢å¼•
+                      this.fontWeight = this.fontWeights[index]; // å°†é€‰ä¸­é¡¹èµ‹å€¼ç»™fontWeight
+                      this.selectedIndex = index; // å°†é€‰ä¸­é¡¹çš„ç´¢å¼•èµ‹å€¼ç»™selectedIndex
+                    })
+                }
+                .width('100%')
+                .height(this.responsive.scale(48))
+                .margin({ top: this.responsive.scale(12) })
+                .justifyContent(FlexAlign.SpaceBetween)
+
+                // æ»šåŠ¨é€Ÿåº¦åŒº
+                Row() {
+                  Text('æ»šåŠ¨é€Ÿåº¦')
+                    .fontSize(this.responsive.scaleFont(16))
+                    .fontWeight(FontWeight.Medium)
+                  Select([
+                    { value: this.speedNames[0] },
+                    { value: this.speedNames[1] },
+                    { value: this.speedNames[2] }
+                  ])
+                    .value(this.speedNames[this.selectedSpeedIndex])
+                    .selected(this.selectedSpeedIndex)
+                    .backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF')
+                    .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+                    .borderWidth(0)
+                    .onSelect((index: number) => {
+                      this.selectedSpeedIndex = index;
+                    })
+                }
+                .width('100%')
+                .height(this.responsive.scale(48))
+                .margin({ top: this.responsive.scale(12) })
+                .justifyContent(FlexAlign.SpaceBetween)
+
+                // é•œåƒå¼€å…³åŒº
+                Row() {
+                  Text('é•œåƒæ˜¾ç¤º')
+                    .fontSize(this.responsive.scaleFont(16))
+                    .fontWeight(FontWeight.Medium)
+                  Toggle({ type: ToggleType.Switch, isOn: this.isMirror })
+                    .onChange((isOn: boolean) => {
+                      this.isMirror = isOn;
+                    })
+                }
+                .width('100%')
+                .height(this.responsive.scale(48))
+                .margin({ top: this.responsive.scale(12) })
+                .justifyContent(FlexAlign.SpaceBetween)
+
+                // å¤œé—´æ¨¡å¼å¼€å…³åŒº
+                Row() {
+                  Text('å¤œé—´æ¨¡å¼')
+                    .fontSize(this.responsive.scaleFont(16))
+                    .fontWeight(FontWeight.Medium)
+                  Toggle({ type: ToggleType.Switch, isOn: this.isNightMode })
+                    .onChange((isOn: boolean) => {
+                      this.isNightMode = isOn;
+                    })
+                }
+                .width('100%')
+                .height(this.responsive.scale(48))
+                .margin({ top: this.responsive.scale(12) })
+                .justifyContent(FlexAlign.SpaceBetween)
+
+                // æ–‡å­—é¢œè‰²åŒº
+                Row() {
+                  Text('æ–‡å­—é¢œè‰²')
+                    .fontSize(this.responsive.scaleFont(16))
+                    .fontWeight(FontWeight.Medium)
+                  Select([
+                    { value: this.fontColorNames[0] },
+                    { value: this.fontColorNames[1] },
+                    { value: this.fontColorNames[2] },
+                    { value: this.fontColorNames[3] },
+                    { value: this.fontColorNames[4] },
+                    { value: this.fontColorNames[5] }
+                  ])
+                    .value(this.fontColorNames[this.selectedFontColorIndex])
+                    .selected(this.selectedFontColorIndex)
+                    .backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF')
+                    .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+                    .borderWidth(0)
+                    .onSelect((index: number) => {
+                      this.selectedFontColorIndex = index;
+                    })
+                }
+                .width('100%')
+                .height(this.responsive.scale(48))
+                .margin({ top: this.responsive.scale(12) })
+                .justifyContent(FlexAlign.SpaceBetween)
+
+                // èƒŒæ™¯é¢œè‰²ä¸»é¢˜åŒº
+                Row() {
+                  Text('èƒŒæ™¯é¢œè‰²')
+                    .fontSize(this.responsive.scaleFont(16))
+                    .fontWeight(FontWeight.Medium)
+                  Select([
+                    { value: this.themeNames[0] },
+                    { value: this.themeNames[1] },
+                    { value: this.themeNames[2] },
+                    { value: this.themeNames[3] },
+                    { value: this.themeNames[4] },
+                    { value: this.themeNames[5] }
+                  ])
+                    .value(this.themeNames[this.selectedThemeIndex])
+                    .selected(this.selectedThemeIndex)
+                    .backgroundColor(this.isNightMode ? '#3A3A3C' : '#FFFFFF')
+                    .fontColor(this.isNightMode ? '#99FFFFFF' : '#99000000')
+                    .borderWidth(0)
+                    .onSelect((index: number) => {
+                      this.selectedThemeIndex = index;
+                    })
+                }
+                .width('100%')
+                .height(this.responsive.scale(48))
+                .margin({ top: this.responsive.scale(12) })
+                .justifyContent(FlexAlign.SpaceBetween)
+
+              }
+              .width('100%')
+              .padding({
+                left: this.responsive.scale(12),
+                right: this.responsive.scale(12),
+                top: this.responsive.scale(4),
+                bottom: this.responsive.scale(4)
+              })
+              .margin({ bottom: this.responsive.scale(12) })
+              .backgroundColor(this.isNightMode ? '#2C2C2E' : Color.White)
+              .borderRadius(this.responsive.scale(16))
+            }
+            .width('100%')
+            .alignItems(HorizontalAlign.Start) // è®¾ç½®Columnå®¹å™¨çš„å†…å®¹å·¦å¯¹é½
+
+            Button('æ˜¾ç¤ºå¼¹å¹•')
+              .height(this.responsive.scale(40))
+              .backgroundColor('#0A59F7')
+              .margin({ top: this.responsive.scale(32) })
+              .width('100%')
+              .onClick(() => {
+                // 1. æŠŠå½“å‰é¡µé¢çš„è®¾ç½®é¡¹ç»„è£…æˆSettingså¯¹è±¡
+                const settings = new Settings(this.content, this.fontSize, this.fontWeight, this.marqueeSpeeds[this.selectedSpeedIndex], this.isMirror, this.fontColors[this.selectedFontColorIndex], this.gradientThemes[this.selectedThemeIndex], this.isNightMode);
+                // 2. è·³è½¬ï¼šç¬¬ä¸€ä¸ªå‚æ•°æ˜¯è·¯ç”±è¡¨çš„nameï¼Œç¬¬äºŒä¸ªæ˜¯ä¼ é€’çš„å‚æ•°
+                this.pathInfos.pushPathByName('Led', settings);
+              })
+          }
+          .width('100%')
+          .padding({
+            left: this.responsive.getPadding(),
+            right: this.responsive.getPadding()
+          })
+        }
+        .scrollBar(BarState.Auto)
+        .edgeEffect(EdgeEffect.Spring)
+        .width('100%')
+        .layoutWeight(1)
+      }
+      .width('100%') // è®¾ç½®Columnå®¹å™¨å®½åº¦ä¸º100%ï¼Œæ¨ªå‘å æ»¡å±å¹•
+      .height('100%') // è®¾ç½®Columnå®¹å™¨é«˜åº¦ä¸º100%ï¼Œçºµå‘å æ»¡å±å¹•
+      .background(this.isNightMode ? '#1C1C1E' : '#F1F3F5')
+      .alignItems(HorizontalAlign.Start)
+    }
+    .mode(NavigationMode.Stack) // è®¾ç½®å•æ æ¨¡å¼
+    .hideToolBar(true) // éšè—å·¥å…·æ 
+  }
+}ÀÔrD’·../utils/ResponsiveUtil±../model/SettingsÔrE—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙRD:\ossc2026\LED-master\4_AI\4_Complete\entry\src\main\ets\utils\ResponsiveUtil.etsAÃªoh-resolveÂEAÂÙLD:\ossc2026\LED-master\4_AI\4_Complete\entry\src\main\ets\model\Settings.etsAÃªoh-resolveÂ“ÔrF–§version¤fileªsourceRoot§sources¥names¨mappings¨Index.js ‘©Index.etsÜg‘”    ‘” ˜”   ” ”	 	” ” #” )”, <”- =˜”   ” ”	 	” ” ” ”8 8”9 9’” ” ‘”  •” '”( 5”) 6”4 ÌA”6 ÌC’” ”! %’” ” ’”  ” #”” "”$ ,”% -”, 4’” !” "ž” !” !”& !)”' !*”. !1”0 !3”: !=”; !>”ÌA !ÌD”ÌC !ÌF”ÌM !ÌP”ÌN !ÌQ”ÌR !ÌU”ÌS !ÌV’”" #&”# #'˜” %” %” %”! % ”" %!”$ %#”& %%”' %&˜” &” &” &”  &”# &"”% &$”( &'”) &(’” (” ("’”& **”' *+ž” +” +”$ +#”& +%”/ +.”1 +0”: +9”< +;”ÌE +ÌD”ÌG +ÌF”ÌP +ÌO”ÌR +ÌQ”Ì[ +ÌZ”Ì\ +Ì[ž” ,” ,”# ,"”% ,$”) ,(”+ ,*”/ ,.”1 ,0”5 ,4”7 ,6”; ,:”= ,<”ÌA ,Ì@”ÌB ,ÌA’”" .&”# .'’” 0 ”  0%‘” 2%Ü ” 3” 3” 3” 3” 3” 3”! 3”# 3”& 3”' 3”) 3!”* 3"”3 3+”5 3-”8 30”9 31”; 33”< 34”ÌE 3=”ÌG 3?”ÌJ 3ÌB”ÌK 3ÌC”ÌL 3ÌD”ÌN 3ÌFÜ ” 4” 4” 4” 4” 4” 4”! 4”# 4”& 4”' 4”) 4!”* 4"”3 4+”5 4-”8 40”9 41”; 43”< 44”ÌE 4=”ÌG 4?”ÌJ 4ÌB”ÌK 4ÌC”ÌL 4ÌD”ÌN 4ÌFÜ ” 5” 5” 5” 5” 5” 5”! 5”# 5”& 5”' 5”) 5!”* 5"”3 5+”5 5-”8 50”9 51”; 53”< 54”ÌE 5=”ÌG 5?”ÌJ 5ÌB”ÌK 5ÌC”ÌL 5ÌD”ÌN 5ÌFÜ ” 6” 6” 6” 6” 6” 6”! 6”# 6”& 6”' 6”) 6!”* 6"”3 6+”5 6-”8 60”9 61”; 63”< 64”ÌE 6=”ÌG 6?”ÌJ 6ÌB”ÌK 6ÌC”ÌL 6ÌD”ÌN 6ÌFÜ ” 7” 7” 7” 7” 7” 7”! 7”# 7”& 7”' 7”) 7!”* 7"”3 7+”5 7-”8 70”9 71”; 73”< 74”ÌE 7=”ÌG 7?”ÌJ 7ÌB”ÌK 7ÌC”ÌL 7ÌD”ÌN 7ÌFÜ ” 8” 8” 8” 8” 8” 8”! 8”# 8”& 8”' 8”) 8!”* 8"”3 8+”5 8-”8 80”9 81”; 83”< 84”ÌE 8=”ÌG 8?”ÌJ 8ÌB”ÌK 8ÌC”ÌL 8ÌD”ÌN 8ÌF”ÌO 8ÌH”ÌV 8ÌO‘”	 9ž” :” :” :”! : ”% :$”' :&”+ :*”- :,”1 :0”3 :2”7 :6”9 :8”= :<”> :=”” <” < ”) <,”+ <.‘” 9’” ”! %’” ” ’”  ” #”” "”$ ,”% -”, 4’” !” "’”" #&”# #'’” (” ("’”& **”' *+’”" .&”# .'’” 0 ”  0%‘” >–” ?” ?” ?”" ?”# ?”, ?˜” ?” ?” Í”” Í”	” Í”
+”* Í””+ Í””0 Í”–” ?” ?” Í•”" Í•”# Í•”' Í•’” Ì@” Ì@–” Ì@” Ì@” Í” Í” Í” Í–” Ì@” Ì@” Í” Í” Í”  ÍÜ ” Ì@” Ì@” Í‘” Í‘” Í‘”" Í‘”# Í‘”. Í‘"”/ Í‘#”0 Í‘$”1 Í‘%”: Í‘.”; Í‘/”< Í‘0”= Í‘1”ÌF Í‘:˜” Ì@” Ì@” Í’” Í’” Í’”- Í’!”. Í’"”3 Í’'’” ÌA” ÌA’” ÌB” ÌB’” ÌA” ÌA–” ÌB” ÌB” ÌQ	” ÌQ” ÌQ” ÌQ’” ÌA” ÌA” ÌB” ÌB” ÌR	” ÌR” ÌR” ÌR” ÌR”& ÌR”' ÌR ”, ÌR%”- ÌR&”/ ÌR(”0 ÌR)’” ÌA” ÌAÜ ” ÌB” ÌB” ÌS	” ÌS” ÌS” ÌS” ÌS”  ÌS”$ ÌS”% ÌS”/ ÌS(”0 ÌS)”: ÌS3”< ÌS5”> ÌS7”ÌC ÌS<”ÌE ÌS>”ÌI ÌSÌB”ÌJ ÌSÌC”ÌT ÌSÌM”ÌU ÌSÌN”Ì_ ÌSÌX”Ìa ÌSÌZ”Ìc ÌSÌ\’” ÌA” ÌA˜” ÌB” ÌB” ÌT	” ÌT” ÌT”( ÌT!”) ÌT"”5 ÌT.”” ÌC
+” ÌC” ÌC” ÌC” ÌC
+” ÌC” ÌD” ÌD” ÌD” ÌD” ÌD”) ÌD%”* ÌD&”3 ÌD/”4 ÌD0”6 ÌD2”7 ÌD3Ü ” ÌC
+” ÌC” ÌE” ÌE” ÌE” ÌE”  ÌE”+ ÌE'”, ÌE(”- ÌE)”. ÌE*”7 ÌE3”8 ÌE4”9 ÌE5”: ÌE6”ÌC ÌE?˜” ÌC
+” ÌC” ÌF” ÌF” ÌF”& ÌF"”' ÌF#”+ ÌF'–” ÌC
+” ÌC” ÌG” ÌG” ÌG” ÌG’” ÌC
+” ÌC’” ÌI
+” ÌI” ÌI
+” ÌI” ÌJ” ÌJ” ÌJ” ÌJ” ÌJ”' ÌJ"”( ÌJ#”- ÌJ(”. ÌJ)”0 ÌJ+”1 ÌJ,” ÌI
+” ÌI” ÌK” ÌK” ÌK” ÌK” ÌK”( ÌK#”) ÌK$”. ÌK)”/ ÌK*”1 ÌK,”2 ÌK-” ÌI
+” ÌI” ÌL” ÌL” ÌL”# ÌL”$ ÌL”. ÌL)”/ ÌL*”4 ÌL/”5 ÌL0”7 ÌL2”8 ÌL3—” ÌI
+” ÌI” ÌM” ÌM” ÌM” ÌM” ÌMœ” ÌN” ÌN” ÌN” ÌN” ÌN”- ÌN+”. ÌN,”5 ÌN3”7 ÌN5”; ÌN9”< ÌN:”= ÌN;’” ÌO” ÌO’” ÌA” ÌA’” ÌB” ÌB’” ÌU” ÌU’” ÌV” ÌV’” ÌU” ÌU–” ÌV” ÌV” Ì‚	” Ì‚” Ì‚” Ì‚’” ÌU” ÌUÜ ” ÌV” ÌV” Ìƒ	” Ìƒ” Ìƒ” Ìƒ” Ìƒ”! Ìƒ”% Ìƒ”& Ìƒ”0 Ìƒ&”1 Ìƒ'”6 Ìƒ,”7 Ìƒ-”9 Ìƒ/”: Ìƒ0”< Ìƒ2’” ÌU” ÌU˜” ÌV” ÌV” Ì„	” Ì„” Ì„”- Ì„#”. Ì„$”3 Ì„)”” ÌW
+” ÌW” ÌW” ÌW” ÌW
+” ÌW” ÌX” ÌX” ÌX” ÌX” ÌX”) ÌX%”* ÌX&”3 ÌX/”4 ÌX0”6 ÌX2”7 ÌX3Ü ” ÌW
+” ÌW” ÌY” ÌY” ÌY” ÌY”  ÌY”+ ÌY'”, ÌY(”- ÌY)”. ÌY*”9 ÌY5”: ÌY6”; ÌY7”< ÌY8”ÌG ÌYÌC˜” ÌW
+” ÌW” ÌZ” ÌZ” ÌZ”& ÌZ"”' ÌZ#”- ÌZ)Ü ” ÌW
+” ÌW” Ì[” Ì[” Ì[” Ì[” Ì[”  Ì[”$ Ì[ ”% Ì[!”/ Ì[+”0 Ì[,”5 Ì[1”6 Ì[2”8 Ì[4”9 Ì[5”; Ì[7’” ÌW
+” ÌW’” Ì]
+” Ì]’” Ì^
+” Ì^’” Ì]
+” Ì]–” Ì^
+” Ì^” Ìv” Ìv” Ìv” Ìv’” Ì]
+” Ì]” Ì^
+” Ì^” Ìw” Ìw” Ìw” Ìw” Ìw”) Ìw!”* Ìw"”/ Ìw'”0 Ìw(”3 Ìw+”4 Ìw,’” Ì]
+” Ì]Ü ” Ì^
+” Ì^” Ìx”" Ìx”# Ìx”' Ìx”( Ìx ”3 Ìx+”4 Ìx,”5 Ìx-”6 Ìx.”? Ìx7”Ì@ Ìx8”ÌA Ìx9”ÌB Ìx:”ÌK ÌxÌC’” Ì]
+” Ì]•” Ì^
+” Ì^” Ìy” Ìy” Ìy›” Ìz” Ìz” Ìz” Ìz” Ìz”$ Ìz ”% Ìz!”* Ìz&”+ Ìz'”- Ìz)”. Ìz*™” Ì{” Ì{” Ì{” Ì{” Ì{”& Ì{"”' Ì{#”1 Ì{-”3 Ì{/›” Ì|” Ì|” Ì|” Ì|” Ì|”' Ì|#”( Ì|$”- Ì|)”. Ì|*”0 Ì|,”1 Ì|-™” Ì}” Ì}” Ì}” Ì}” Ì}”% Ì}!”& Ì}"”0 Ì},”2 Ì}.‘” Ì~’” Ì]
+” Ì]š” Ì^
+” Ì^” Ì” Ì” Ì” Ì” Ì”! Ì”" Ì”$ Ì’” Ì]
+” Ì]˜” Ì^
+” Ì^” Ì€” Ì€” Ì€”- Ì€%”. Ì€&”3 Ì€+’” Ì_” Ì_’” Ì`” Ì`’” Ì_” Ì_–” Ì`” Ì`” Ìm” Ìm” Ìm” Ìm’” Ì_” Ì_–” Ì`” Ì`” Ìn” Ìn” Ìn” Ìn’” Ì_” Ì_•” Ì`” Ì`” Ìo” Ìo” Ìo–” Ìp” Ìp” Ìp”, Ìp*”- Ìp+”2 Ìp0” Ìq” Ìq” Ìq” Ìq” Ìq”+ Ìq)”, Ìq*”0 Ìq.”1 Ìq/”ÌC ÌqÌA”ÌD ÌqÌB”ÌE ÌqÌC”ÌK ÌqÌI‘” Ìr’” Ì_” Ì_” Ì`” Ì`” Ìs” Ìs” Ìs”! Ìs”" Ìs”, Ìs)”- Ìs*”2 Ìs/”3 Ìs0”5 Ìs2”6 Ìs3’” Ì_” Ì_˜” Ì`” Ì`” Ìt” Ìt” Ìt”( Ìt%”) Ìt&”/ Ìt,–” Ìa” Ìa” Ìa” Ìa” Ìa”$ Ìaœ” Ìa” Ìa” Ìc” Ìc” Ìc”  Ìc ”( Ìc(”* Ìc*”6 Ìc6”7 Ìc7”> Ìc>”Ì@ ÌcÌ@•” Ìa” Ìa” Ìe” Ìe”  Ìe ”” Ìf” Ìf” Ìf” Ìf” Ìg” Ìg” Ìg” Ìg” Ìg”( Ìg*”) Ìg+”- Ìg/”. Ìg0”Ì@ ÌgÌB”ÌA ÌgÌC”ÌB ÌgÌD”ÌI ÌgÌK‘” Ìhš” Ìa” Ìa” Ìi” Ìi” Ìi” Ìi” Ìi”' Ìi'”* Ìi*”- Ìi-˜” Ìa” Ìa” Ìj” Ìj” Ìj”  Ìj ”! Ìj!”+ Ìj+” Ìa” Ìa” Ìk” Ìk” Ìk” Ìk”  Ìk ”* Ìk*”+ Ìk+”/ Ìk/”0 Ìk0”ÌF ÌkÌF”ÌG ÌkÌG’” Ìa” Ìa’” Ì_” Ì_’” Ì`” Ì`’” Ì]
+” Ì]’” Ì^
+” Ì^’” ÌU” ÌU’” ÌV” ÌV’” Ì†” Ì†’” Ì‡” Ì‡’” Ì†” Ì†˜” Ì‡” Ì‡” ÍŠ	” ÍŠ” ÍŠ”% ÍŠ”& ÍŠ”* ÍŠ ’” Ì†” Ì†˜” Ì‡” Ì‡” Í‹	” Í‹” Í‹”( Í‹”) Í‹”/ Í‹%’” Ì†” Ì†–” Ì‡” Ì‡” ÍŒ	” ÍŒ” ÍŒ” ÍŒ’” Ì†” Ì†–” Ì‡” Ì‡” Í	” Í”  Í”! Í’” Ìˆ
+” Ìˆ–” Ìˆ
+” Ìˆ” Í„” Í„” Í„” Í„•” Ìˆ
+” Ìˆ” Í…” Í…” Í…™” Í†” Í†” Í†” Í†” Í†”% Í†!”& Í†"”0 Í†,”2 Í†.™” Í‡” Í‡” Í‡” Í‡” Í‡”& Í‡"”' Í‡#”1 Í‡-”3 Í‡/‘” Íˆ’” Ì‰” Ì‰’” ÌŠ” ÌŠ’” Ì‰” Ì‰–” ÌŠ” ÌŠ” Ì©” Ì©” Ì©” Ì©’” Ì‰” Ì‰˜” ÌŠ” ÌŠ” Ìª” Ìª” Ìª”- Ìª'”. Ìª(”3 Ìª-’” Ì‰” Ì‰•” ÌŠ” ÌŠ” Ì«” Ì«” Ì«›” Ì¬” Ì¬” Ì¬” Ì¬” Ì¬”$ Ì¬"”% Ì¬#”* Ì¬(”+ Ì¬)”- Ì¬+”. Ì¬,›” Ì­” Ì­” Ì­” Ì­” Ì­”' Ì­%”( Ì­&”- Ì­+”. Ì­,”0 Ì­.”1 Ì­/‘” Ì®”” Ì‹” Ì‹” Ì‹” Ì‹” Ì‹” Ì‹” ÌŒ” ÌŒ” ÌŒ” ÌŒ” ÌŒ”) ÌŒ)”* ÌŒ*”3 ÌŒ3”4 ÌŒ4”6 ÌŒ6”7 ÌŒ7Ü ” Ì‹” Ì‹” Ì” Ì” Ì” Ì”  Ì ”+ Ì+”, Ì,”- Ì-”. Ì.”9 Ì9”: Ì:”; Ì;”< Ì<”ÌG ÌÌG˜” Ì‹” Ì‹” ÌŽ” ÌŽ” ÌŽ”& ÌŽ&”' ÌŽ'”- ÌŽ-Ü ” Ì‹” Ì‹” Ì” Ì” Ì” Ì” Ì”  Ì ”$ Ì$”% Ì%”/ Ì/”0 Ì0”5 Ì5”6 Ì6”8 Ì8”9 Ì9”; Ì;’” Ì‹” Ì‹’” Ì‘” Ì‘š” Ì’” Ì’” Ì’” Ì’”" Ì’”$ Ì’”( Ì’#”) Ì’$”0 Ì’+”2 Ì’-’” Ì‘” Ì‘Ü ” Ì’” Ì’” Ì“”$ Ì“ ”% Ì“!”) Ì“%”* Ì“&”5 Ì“1”6 Ì“2”7 Ì“3”8 Ì“4”ÌA Ì“=”ÌB Ì“>”ÌC Ì“?”ÌD Ì“Ì@”ÌI Ì“ÌE”ÌJ Ì“ÌF”ÌO Ì“ÌK’” Ì‘” Ì‘–” Ì’” Ì’” Ì”” Ì”” Ì””! Ì”’” Ì‘” Ì‘˜” Ì’” Ì’” Ì•”  Ì•”! Ì–”% Ì–”' Ì–”. Ì–‘” Ì—”” Ì˜”# Ì˜'”% Ì˜)”& Ì˜*–” Ì™” Ì™#”! Ì™%”% Ì™)”& Ì™*”6 Ì™:‘” Ìš’” Ì‘” Ì‘” Ì’” Ì’” Ìœ” Ìœ” Ìœ”  Ìœ”! Ìœ”+ Ìœ'”, Ìœ(”1 Ìœ-”2 Ìœ.”4 Ìœ0”5 Ìœ1’” Ì‘” Ì‘•” Ì’” Ì’” Ì” Ì” Ì›” Ìž” Ìž” Ìž” Ìž” Ìž”$ Ìž&”% Ìž'”* Ìž,”+ Ìž-”, Ìž.”- Ìž/™” ÌŸ” ÌŸ” ÌŸ” ÌŸ” ÌŸ”& ÌŸ(”' ÌŸ)”1 ÌŸ3”3 ÌŸ5›” Ì ” Ì ” Ì ” Ì ” Ì ”' Ì )”( Ì *”- Ì /”. Ì 0”/ Ì 1”0 Ì 2™” Ì¡” Ì¡” Ì¡” Ì¡” Ì¡”% Ì¡'”& Ì¡(”0 Ì¡2”2 Ì¡4‘” Ì¢’” Ì‘” Ì‘Ü ” Ì’” Ì’” Ì£” Ì£” Ì£” Ì£”! Ì£”# Ì£”' Ì£#”( Ì£$”2 Ì£.”3 Ì£/”8 Ì£4”9 Ì£5”: Ì£6”; Ì£7”= Ì£9’” Ì‘” Ì‘” Ì’” Ì’” Ì¤”! Ì¤”" Ì¤”& Ì¤"”' Ì¤#”1 Ì¤-”2 Ì¤.”7 Ì¤3”8 Ì¤4”: Ì¤6”; Ì¤7’” Ì‘” Ì‘™” Ì’” Ì’” Ì¥” Ì¥” Ì¥” Ì¥”$ Ì¥(”& Ì¥*”( Ì¥,™” Ì¦” Ì¦” Ì¦” Ì¦” Ì¦!”$ Ì¦&”% Ì¦'”& Ì¦(”7 Ì¦9’” Ì§” Ì§’” Ì‰” Ì‰’” ÌŠ” ÌŠ’” Ì°” Ì°’” Ì±” Ì±’” Ì°” Ì°–” Ì±” Ì±” Íu” Íu” Íu” Íu’” Ì°” Ì°˜” Ì±” Ì±” Ív” Ív” Ív”- Ív'”. Ív(”3 Ív-’” Ì²” Ì²”” Ì³” Ì³” Ì³” Ì³’” Ì²” Ì²” Ì³” Ì³” Ì´” Ì´” Ì´” Ì´” Ì´”) Ì´)”* Ì´*”3 Ì´3”4 Ì´4”6 Ì´6”7 Ì´7’” Ì²” Ì²Ü ” Ì³” Ì³” Ìµ” Ìµ” Ìµ” Ìµ”  Ìµ ”+ Ìµ+”, Ìµ,”- Ìµ-”. Ìµ.”9 Ìµ9”: Ìµ:”; Ìµ;”< Ìµ<”ÌG ÌµÌG’” Ì²” Ì²˜” Ì³” Ì³” Ì¶” Ì¶” Ì¶”& Ì¶&”' Ì¶'”- Ì¶-’” Ì²” Ì²•” Ì³” Ì³” Ì·” Ì·” Ì·›” Ì¸” Ì¸” Ì¸” Ì¸” Ì¸”' Ì¸)”( Ì¸*”- Ì¸/”. Ì¸0”/ Ì¸1”0 Ì¸2›” Ì¹” Ì¹” Ì¹” Ì¹” Ì¹”% Ì¹'”& Ì¹(”+ Ì¹-”, Ì¹.”. Ì¹0”/ Ì¹1‘” Ìº’” Ì²” Ì²’” Ì³” Ì³’” Ì¼” Ì¼–” Ì¼” Ì¼” Íj” Íj” Íj” Íj•” Ì¼” Ì¼” Ík” Ík” Ík›” Íl” Íl” Íl” Íl” Íl”% Íl%”& Íl&”+ Íl+”, Íl,”. Íl.”/ Íl/›” Ím” Ím” Ím” Ím” Ím”& Ím&”' Ím'”, Ím,”- Ím-”/ Ím/”0 Ím0›” Ín” Ín” Ín” Ín” Ín”$ Ín$”% Ín%”* Ín*”+ Ín+”, Ín,”- Ín-›” Ío” Ío” Ío” Ío” Ío”' Ío'”( Ío(”- Ío-”. Ío.”/ Ío/”0 Ío0‘” ÍpÜ ” Ì¼” Ì¼” Íq” Íq” Íq” Íq”" Íq”$ Íq ”( Íq$”) Íq%”3 Íq/”4 Íq0”9 Íq5”: Íq6”< Íq8”= Íq9”? Íq;Ü ” Ì¼” Ì¼” Ír”" Ír”# Ír”' Ír#”( Ír$”3 Ír/”4 Ír0”5 Ír1”6 Ír2”? Ír;”Ì@ Ír<”ÌA Ír=”ÌB Ír>”ÌG ÍrÌC”ÌH ÍrÌD”ÌM ÍrÌI” Ì¼” Ì¼” Ís” Ís”  Ís”$ Ís ”% Ís!”/ Ís+”0 Ís,”5 Ís1”6 Ís2”8 Ís4”9 Ís5’” Ì½” Ì½’” Ì¾” Ì¾’” Ì¿” Ì¿–” Ì¿” Ì¿” ÌÆ” ÌÆ” ÌÆ” ÌÆ” Ì¿” Ì¿” ÌÇ” ÌÇ” ÌÇ” ÌÇ” ÌÇ”& ÌÇ)”' ÌÇ*”, ÌÇ/”- ÌÇ0”/ ÌÇ2”0 ÌÇ3˜” Ì¿” Ì¿” ÌÈ” ÌÈ!” ÌÈ"”( ÌÈ+”) ÌÈ,”5 ÌÈ8”” ÌÀ” ÌÀ” ÌÀ” ÌÀ” ÌÀ” ÌÀ” ÌÁ” ÌÁ” ÌÁ ” ÌÁ$” ÌÁ%”) ÌÁ/”* ÌÁ0”3 ÌÁ9”4 ÌÁ:”6 ÌÁ<”7 ÌÁ=˜” ÌÀ” ÌÀ” ÌÂ” ÌÂ!” ÌÂ"”& ÌÂ,”' ÌÂ-”- ÌÂ3’” ÌÀ” ÌÀ–” ÌÃ” ÌÃ” ÌÃ” ÌÃ” ÌÃ”) ÌÃ*” ÌÃ” ÌÃ” ÌÄ” ÌÄ” ÌÄ ” ÌÄ$” ÌÄ%”) ÌÄ/”* ÌÄ0”3 ÌÄ9”4 ÌÄ:”6 ÌÄ<”7 ÌÄ=’” ÌÃ” ÌÃ’” Ì¿” Ì¿“” ÌÊ” ÌÊ” ÌÊ–” ÌË” ÌË” ÌË” ÌË” ÌË ”$ ÌË(”” ÌÌ” ÌÌ” ÌÌ” ÌÌ”” ÌÍ” ÌÍ” ÌÍ” ÌÍ”” ÌÎ” ÌÎ” ÌÎ” ÌÎ–” ÌÏ” ÌÏ” ÌÏ”" ÌÏ&”# ÌÏ'”( ÌÏ,‘” ÌÐ–” ÌÊ” ÌÊ” ÌÑ” ÌÑ” ÌÑ”, ÌÑ.” ÌÊ” ÌÊ” ÌÒ” ÌÒ” ÌÒ” ÌÒ ” ÌÒ!”) ÌÒ+”* ÌÒ,”/ ÌÒ1”0 ÌÒ2”2 ÌÒ4”3 ÌÒ5˜” ÌÊ” ÌÊ” ÌÓ” ÌÓ” ÌÓ ”# ÌÓ%”$ ÌÓ&”) ÌÓ+–” ÌÊ” ÌÊ” ÌÔ” ÌÔ” ÌÔ ”' ÌÔ)–” ÌÊ” ÌÊ” ÌÕ”  ÌÕ"”! ÌÕ#”* ÌÕ,–” ÌÊ” ÌÊ” ÌÖ” ÌÖ” ÌÖ”! ÌÖ#™” ÌÊ” ÌÊ” Ì×” Ì×” Ì×” Ì×”" Ì×,”$ Ì×.”& Ì×0—” ÌØ” ÌØ” ÌØ” ÌØ#”  ÌØ&”% ÌØ+”& ÌØ,’” ÌÙ”- ÌÙ3˜” ÌÚ” ÌÚ” ÌÚ” ÌÚ”! ÌÚ'”& ÌÚ,”( ÌÚ.”* ÌÚ0—” ÌÛ” ÌÛ” ÌÛ”% ÌÛ)”( ÌÛ,”+ ÌÛ/”, ÌÛ0‘” ÌÜ˜” ÌÜ” ÌÜ!” ÌÜ%” ÌÜ&”& ÌÜ.”+ ÌÜ3”. ÌÜ6”0 ÌÜ8—” ÌÝ” ÌÝ” ÌÝ”% ÌÝ)”( ÌÝ,”+ ÌÝ/”, ÌÝ0‘” ÌÞ‘” ÌÞ—” Ìß” Ìß” Ìß”% Ìß)”( Ìß,”+ Ìß/”, Ìß0‘” Ìà’” Ìá” Ìá’” Ì½” Ì½’” Ì¾” Ì¾’” Ìä” Ìä’” Ìå” Ìå’” Ìä” Ìä–” Ìå” Ìå” Ìø” Ìø” Ìø” Ìø’” Ìä” Ìä” Ìå” Ìå” Ìù” Ìù” Ìù” Ìù” Ìù”& Ìù'”' Ìù(”, Ìù-”- Ìù.”/ Ìù0”0 Ìù1’” Ìä” ÌäÜ ” Ìå” Ìå” Ìú” Ìú” Ìú” Ìú” Ìú” Ìú”" Ìú#”# Ìú$”- Ìú.”. Ìú/”3 Ìú4”4 Ìú5”6 Ìú7”7 Ìú8”9 Ìú:’” Ìä” Ìä˜” Ìå” Ìå” Ìû” Ìû” Ìû ”( Ìû)”) Ìû*”5 Ìû6”” Ìæ” Ìæ” Ìæ” Ìæ” Ìæ” Ìæ” Ìç” Ìç” Ìç” Ìç"” Ìç#”) Ìç-”* Ìç.”3 Ìç7”4 Ìç8”6 Ìç:”7 Ìç;˜” Ìæ” Ìæ” Ìè” Ìè” Ìè ”& Ìè*”' Ìè+”- Ìè1’” Ìæ” Ìæ“” Ìé” Ìé” Ìéž” Ìê” Ìê” Ìê” Ìê” Ìê!” Ìê"”) Ìê-”* Ìê.”+ Ìê/”, Ìê0”- Ìê1”5 Ìê9”7 Ìê;”9 Ìê=ž” Ìë” Ìë” Ìë” Ìë” Ìë!” Ìë"”) Ìë-”* Ìë.”+ Ìë/”, Ìë0”- Ìë1”5 Ìë9”7 Ìë;”9 Ìë=ž” Ìì” Ìì” Ìì” Ìì” Ìì!” Ìì"”) Ìì-”* Ìì.”+ Ìì/”, Ìì0”- Ìì1”5 Ìì9”7 Ìì;”9 Ìì=‘” Ìí›” Ìé” Ìé” Ìî” Ìî” Ìî” Ìî” Ìî ”( Ìî*”) Ìî+”1 Ìî3”3 Ìî5˜” Ìé” Ìé” Ìï” Ìï” Ìï”  Ìï"”! Ìï#”. Ìï0Ü ” Ìé” Ìé” Ìð”" Ìð$”# Ìð%”' Ìð)”( Ìð*”3 Ìð5”4 Ìð6”5 Ìð7”6 Ìð8”? ÌðÌA”Ì@ ÌðÌB”ÌA ÌðÌC”ÌB ÌðÌD”ÌK ÌðÌMÜ ” Ìé” Ìé” Ìñ” Ìñ” Ìñ”! Ìñ#”" Ìñ$”- Ìñ/”. Ìñ0”/ Ìñ1”0 Ìñ2”; Ìñ=”< Ìñ>”= Ìñ?”> ÌñÌ@”ÌI ÌñÌK–” Ìé” Ìé” Ìò” Ìò ” Ìò!”  Ìò"™” Ìé” Ìé” Ìó” Ìó” Ìó” Ìó”" Ìó,”$ Ìó.”& Ìó0ž” Ìô” Ìô” Ìô” Ìô%”" Ìô(”& Ìô,”' Ìô-”2 Ìô8”3 Ìô9”8 Ìô>”9 Ìô?”: ÌôÌ@”; ÌôÌA”ÌO ÌôÌU™” Ìõ” Ìõ” Ìõ”" Ìõ(”% Ìõ+”* Ìõ0”+ Ìõ1”, Ìõ2”ÌF ÌõÌL’” Ìö” Ìö’” Ìé” Ìé’” Ìä” Ìä’” Ìå” Ìå’” Ìý” Ìý’” Ìþ” Ìþ’” Ìý” Ìý–” Ìþ” Ìþ” Í” Í” Í” Í’” Ìý” Ìý” Ìþ” Ìþ” Í” Í” Í” Í” Í”& Í'”' Í(”, Í-”- Í.”/ Í0”0 Í1’” Ìý” ÌýÜ ” Ìþ” Ìþ” Í” Í” Í” Í” Í” Í”" Í#”# Í$”- Í.”. Í/”3 Í4”4 Í5”6 Í7”7 Í8”9 Í:’” Ìý” Ìý˜” Ìþ” Ìþ” Í” Í” Í ”( Í)”) Í*”5 Í6”” Ìÿ” Ìÿ” Ìÿ” Ìÿ” Ìÿ” Ìÿ” Í ” Í ” Í ” Í "” Í #”) Í -”* Í .”3 Í 7”4 Í 8”6 Í :”7 Í ;˜” Ìÿ” Ìÿ” Í” Í” Í ”& Í*”' Í+”- Í1’” Ìÿ” Ìÿ“” Í” Í” Í›” Í” Í” Í” Í” Í!” Í"”( Í,”) Í-”* Í.”+ Í/”- Í1›” Í” Í” Í” Í” Í!” Í"”( Í,”) Í-”* Í.”+ Í/”- Í1›” Í” Í” Í” Í” Í!” Í"”( Í,”) Í-”* Í.”+ Í/”- Í1‘” Í” Í” Í” Í” Í” Í” Í” Í ”( Í*”) Í+”- Í/”. Í0”Ì@ ÍÌB”ÌA ÍÌC˜” Í” Í” Í” Í” Í”  Í"”! Í#”3 Í5Ü ” Í” Í” Í	”" Í	$”# Í	%”' Í	)”( Í	*”3 Í	5”4 Í	6”5 Í	7”6 Í	8”? Í	ÌA”Ì@ Í	ÌB”ÌA Í	ÌC”ÌB Í	ÌD”ÌK Í	ÌMÜ ” Í” Í” Í
+” Í
+” Í
+”! Í
+#”" Í
+$”- Í
+/”. Í
+0”/ Í
+1”0 Í
+2”; Í
+=”< Í
+>”= Í
+?”> Í
+Ì@”ÌI Í
+ÌK–” Í” Í” Í” Í ” Í!”  Í"™” Í” Í” Í” Í” Í” Í”" Í,”$ Í.”& Í0—” Í” Í” Í”' Í-”* Í0”/ Í5”0 Í6’” Í” Í’” Í” Í’” Ìý” Ìý’” Ìþ” Ìþ’” Í” Í’” Í” Í’” Í” Í–” Í” Í” Í” Í” Í” Í’” Í” Í” Í” Í” Í ” Í ” Í ” Í ” Í ”& Í '”' Í (”, Í -”- Í .”/ Í 0”0 Í 1’” Í” ÍÜ ” Í” Í” Í!” Í!” Í!” Í!” Í!” Í!”" Í!#”# Í!$”- Í!.”. Í!/”3 Í!4”4 Í!5”6 Í!7”7 Í!8”9 Í!:’” Í” Í˜” Í” Í” Í"” Í"” Í" ”( Í")”) Í"*”5 Í"6”” Í” Í” Í” Í” Í” Í” Í” Í” Í” Í"” Í#”) Í-”* Í.”3 Í7”4 Í8”6 Í:”7 Í;˜” Í” Í” Í” Í” Í ”& Í*”' Í+”- Í1’” Í” ÍÜ ” Í” Í” Í” Í”  Í”" Í!”, Í+”- Í,”3 Í2”5 Í4”9 Í8”; Í:”? Í>”Ì@ Í?”ÌH ÍÌG”ÌJ ÍÌI™” Í” Í” Í” Í” Í” Í”! Í,”# Í.”% Í0—” Í” Í” Í” Í#”  Í&”$ Í*”% Í+’” Í” Í’” Í” Í’” Í” Í’” Í” Í’” Í$” Í$’” Í%” Í%’” Í$” Í$–” Í%” Í%” Í.” Í.” Í.” Í.’” Í$” Í$” Í%” Í%” Í/” Í/” Í/” Í/” Í/”& Í/'”' Í/(”, Í/-”- Í/.”/ Í/0”0 Í/1’” Í$” Í$Ü ” Í%” Í%” Í0” Í0” Í0” Í0” Í0” Í0”" Í0#”# Í0$”- Í0.”. Í0/”3 Í04”4 Í05”6 Í07”7 Í08”9 Í0:’” Í$” Í$˜” Í%” Í%” Í1” Í1” Í1 ”( Í1)”) Í1*”5 Í16”” Í&” Í&” Í&” Í&” Í&” Í&” Í'” Í'” Í'” Í'"” Í'#”) Í'-”* Í'.”3 Í'7”4 Í'8”6 Í':”7 Í';˜” Í&” Í&” Í(” Í(” Í( ”& Í(*”' Í(+”- Í(1’” Í&” Í&Ü ” Í)” Í)” Í)” Í)”  Í)”" Í)!”, Í)+”- Í),”3 Í)2”5 Í)4”9 Í)8”; Í):”? Í)>”Ì@ Í)?”ÌK Í)ÌJ”ÌM Í)ÌL™” Í)” Í)” Í*” Í*” Í*” Í*”! Í*,”# Í*.”% Í*0—” Í+” Í+” Í+”  Í+&”# Í+)”' Í+-”( Í+.’” Í,” Í,’” Í)” Í)’” Í$” Í$’” Í%” Í%’” Í3” Í3’” Í4” Í4’” Í3” Í3–” Í4” Í4” ÍI” ÍI” ÍI” ÍI’” Í3” Í3” Í4” Í4” ÍJ” ÍJ” ÍJ” ÍJ” ÍJ”& ÍJ'”' ÍJ(”, ÍJ-”- ÍJ.”/ ÍJ0”0 ÍJ1’” Í3” Í3Ü ” Í4” Í4” ÍK” ÍK” ÍK” ÍK” ÍK” ÍK”" ÍK#”# ÍK$”- ÍK.”. ÍK/”3 ÍK4”4 ÍK5”6 ÍK7”7 ÍK8”9 ÍK:’” Í3” Í3˜” Í4” Í4” ÍL” ÍL” ÍL ”( ÍL)”) ÍL*”5 ÍL6”” Í5” Í5” Í5” Í5” Í5” Í5” Í6” Í6” Í6” Í6"” Í6#”) Í6-”* Í6.”3 Í67”4 Í68”6 Í6:”7 Í6;˜” Í5” Í5” Í7” Í7” Í7 ”& Í7*”' Í7+”- Í71’” Í5” Í5“” Í8” Í8” Í8›” Í9” Í9” Í9” Í9” Í9!” Í9"”, Í90”- Í91”. Í92”/ Í93”1 Í95›” Í:” Í:” Í:” Í:” Í:!” Í:"”, Í:0”- Í:1”. Í:2”/ Í:3”1 Í:5›” Í;” Í;” Í;” Í;” Í;!” Í;"”, Í;0”- Í;1”. Í;2”/ Í;3”1 Í;5›” Í<” Í<” Í<” Í<” Í<!” Í<"”, Í<0”- Í<1”. Í<2”/ Í<3”1 Í<5›” Í=” Í=” Í=” Í=” Í=!” Í="”, Í=0”- Í=1”. Í=2”/ Í=3”1 Í=5›” Í>” Í>” Í>” Í>” Í>!” Í>"”, Í>0”- Í>1”. Í>2”/ Í>3”1 Í>5‘” Í?” Í8” Í8” Í@” Í@” Í@” Í@” Í@ ”, Í@.”- Í@/”1 Í@3”2 Í@4”ÌH Í@ÌJ”ÌI Í@ÌK˜” Í8” Í8” ÍA” ÍA” ÍA”  ÍA"”! ÍA#”7 ÍA9Ü ” Í8” Í8” ÍB”" ÍB$”# ÍB%”' ÍB)”( ÍB*”3 ÍB5”4 ÍB6”5 ÍB7”6 ÍB8”? ÍBÌA”Ì@ ÍBÌB”ÌA ÍBÌC”ÌB ÍBÌD”ÌK ÍBÌMÜ ” Í8” Í8” ÍC” ÍC” ÍC”! ÍC#”" ÍC$”- ÍC/”. ÍC0”/ ÍC1”0 ÍC2”; ÍC=”< ÍC>”= ÍC?”> ÍCÌ@”ÌI ÍCÌK–” Í8” Í8” ÍD” ÍD ” ÍD!”  ÍD"™” Í8” Í8” ÍE” ÍE” ÍE” ÍE”" ÍE,”$ ÍE.”& ÍE0—” ÍF” ÍF” ÍF”+ ÍF1”. ÍF4”3 ÍF9”4 ÍF:’” ÍG” ÍG’” Í8” Í8’” Í3” Í3’” Í4” Í4’” ÍN” ÍN’” ÍO” ÍO’” ÍN” ÍN–” ÍO” ÍO” Íd” Íd” Íd” Íd’” ÍN” ÍN” ÍO” ÍO” Íe” Íe” Íe” Íe” Íe”& Íe'”' Íe(”, Íe-”- Íe.”/ Íe0”0 Íe1’” ÍN” ÍNÜ ” ÍO” ÍO” Íf” Íf” Íf” Íf” Íf” Íf”" Íf#”# Íf$”- Íf.”. Íf/”3 Íf4”4 Íf5”6 Íf7”7 Íf8”9 Íf:’” ÍN” ÍN˜” ÍO” ÍO” Íg” Íg” Íg ”( Íg)”) Íg*”5 Íg6”” ÍP” ÍP” ÍP” ÍP” ÍP” ÍP” ÍQ” ÍQ” ÍQ” ÍQ"” ÍQ#”) ÍQ-”* ÍQ.”3 ÍQ7”4 ÍQ8”6 ÍQ:”7 ÍQ;˜” ÍP” ÍP” ÍR” ÍR” ÍR ”& ÍR*”' ÍR+”- ÍR1’” ÍP” ÍP“” ÍS” ÍS” ÍS›” ÍT” ÍT” ÍT” ÍT” ÍT!” ÍT"”( ÍT,”) ÍT-”* ÍT.”+ ÍT/”- ÍT1›” ÍU” ÍU” ÍU” ÍU” ÍU!” ÍU"”( ÍU,”) ÍU-”* ÍU.”+ ÍU/”- ÍU1›” ÍV” ÍV” ÍV” ÍV” ÍV!” ÍV"”( ÍV,”) ÍV-”* ÍV.”+ ÍV/”- ÍV1›” ÍW” ÍW” ÍW” ÍW” ÍW!” ÍW"”( ÍW,”) ÍW-”* ÍW.”+ ÍW/”- ÍW1›” ÍX” ÍX” ÍX” ÍX” ÍX!” ÍX"”( ÍX,”) ÍX-”* ÍX.”+ ÍX/”- ÍX1›” ÍY” ÍY” ÍY” ÍY” ÍY!” ÍY"”( ÍY,”) ÍY-”* ÍY.”+ ÍY/”- ÍY1‘” ÍZ” ÍS” ÍS” Í[” Í[” Í[” Í[” Í[ ”( Í[*”) Í[+”- Í[/”. Í[0”Ì@ Í[ÌB”ÌA Í[ÌC˜” ÍS” ÍS” Í\” Í\” Í\”  Í\"”! Í\#”3 Í\5Ü ” ÍS” ÍS” Í]”" Í]$”# Í]%”' Í])”( Í]*”3 Í]5”4 Í]6”5 Í]7”6 Í]8”? Í]ÌA”Ì@ Í]ÌB”ÌA Í]ÌC”ÌB Í]ÌD”ÌK Í]ÌMÜ ” ÍS” ÍS” Í^” Í^” Í^”! Í^#”" Í^$”- Í^/”. Í^0”/ Í^1”0 Í^2”; Í^=”< Í^>”= Í^?”> Í^Ì@”ÌI Í^ÌK–” ÍS” ÍS” Í_” Í_ ” Í_!”  Í_"™” ÍS” ÍS” Í`” Í`” Í`” Í`”" Í`,”$ Í`.”& Í`0—” Ía” Ía” Ía”' Ía-”* Ía0”/ Ía5”0 Ía6’” Íb” Íb’” ÍS” ÍS’” ÍN” ÍN’” ÍO” ÍO’” Ì¼” Ì¼’” Ì°” Ì°’” Ì±” Ì±”” Íx” Íx”# Íx”) Íx” Íx” Íx” Íy” Íy” Íy” Íy” Íy”) Íy%”* Íy&”/ Íy+”0 Íy,”2 Íy.”3 Íy/–” Íx” Íx” Íz”" Íz”# Íz”, Íz(Ü ” Íx” Íx” Í{” Í{” Í{” Í{” Í{”! Í{”% Í{!”& Í{"”0 Í{,”1 Í{-”6 Í{2”7 Í{3”9 Í{5”: Í{6”< Í{8–” Íx” Íx” Í|” Í|” Í|” Í|—” Íx” Íx” Í}” Í}” Í}” Í}”  Í}’” Í~”, Í~,Ü 7” Í” Í” Í”! Í!”% Í%”- Í-”. Í.”2 Í2”3 Í3”: Í:”< Í<”Ì@ ÍÌ@”ÌA ÍÌA”ÌI ÍÌI”ÌK ÍÌK”ÌO ÍÌO”ÌP ÍÌP”ÌZ ÍÌZ”Ì\ ÍÌ\”Ì` ÍÌ`”Ìa ÍÌa”Ìn ÍÌn”Ìo ÍÌo”Ìs ÍÌs”Ìt ÍÌt”Ì† ÍÌ†”Ì‡ ÍÌ‡”Ì‰ ÍÌ‰”Ì ÍÌ”ÌŽ ÍÌŽ”Ì– ÍÌ–”Ì˜ ÍÌ˜”Ìœ ÍÌœ”Ì ÍÌ”Ì§ ÍÌ§”Ì¨ ÍÌ¨”Ì¬ ÍÌ¬”Ì­ ÍÌ­”ÌÃ ÍÌÃ”ÌÄ ÍÌÄ”ÌÆ ÍÌÆ”ÌÊ ÍÌÊ”ÌË ÍÌË”ÌÙ ÍÌÙ”ÌÚ ÍÌÚ”ÌÞ ÍÌÞ”Ìß ÍÌß”Ìñ ÍÌñ”Ìò ÍÌò”Ìô ÍÌô”Ìø ÍÌø”Ìù ÍÌù”Í ÍÍ”Í ÍÍ”Í ÍÍ’” Í€”1 Í€1œ” Í” Í” Í” Í” Í”- Í-”. Í.”3 Í3”5 Í5”= Í=”> Í>”? Í?’” Í‚” Í‚’” Íx” Íx’” Ìˆ
+” Ìˆ’” Ì†” Ì†’” Ì‡” Ì‡’” Ì@” Ì@’” ?” ?‘” Í–‘”  	’” ”	 ‘”& &‘”  	’” ”	 ‘”' ‘”  	’” ”	 ‘”+ $‘”  	’” ”	 ‘”) 5‘”  	’” ”	 ‘”, #‘”  #	’” #”	 #‘”1 #(‘”  (	’” (”	 (‘”' (#‘”  *	’” *”	 *‘”5 *,‘”  .	’” .”	 .‘”1 .(‘”  0	’” 0”	 0‘”* 0&ÔrG–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜi‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  ÌŽ ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ìž ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌÐ ‘”  ÌÑ ‘”  ÌÒ ‘”  ÌÓ ‘”  ÌÔ ‘”  ÌÕ ‘”  ÌÖ ‘”  Ì× ‘”  ÌØ ‘”  ÌÙ ‘”  ÌÚ ‘”  ÌÛ ‘”  ÌÜ ‘”  ÌÝ ‘”  ÌÞ ‘”  Ìß ‘”  Ìà ‘”  Ìá ‘”  Ìâ ‘”  Ìã ‘”  Ìä ‘”  Ìå ‘”  Ìæ ‘”  Ìç ‘”  Ìè ‘”  Ìé ‘”  Ìê ‘”  Ìë ‘”  Ìì ‘”  Ìí ‘”  Ìî ‘”  Ìï ‘”  Ìð ‘”  Ìñ ‘”  Ìò ‘”  Ìó ‘”  Ìô ‘”  Ìõ ‘”  Ìö ‘”  Ì÷ ‘”  Ìø ‘”  Ìù ‘”  Ìú ‘”  Ìû ‘”  Ìü ‘”  Ìý ‘”  Ìþ ‘”  Ìÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ‘”  ÍB ‘”  ÍC ‘”  ÍD ‘”  ÍE ‘”  ÍF ‘”  ÍG ‘”  ÍH ‘”  ÍI ‘”  ÍJ ‘”  ÍK ‘”  ÍL ‘”  ÍM ‘”  ÍN ‘”  ÍO ‘”  ÍP ‘”  ÍQ ‘”  ÍR ‘”  ÍS ‘”  ÍT ‘”  ÍU ‘”  ÍV ‘”  ÍW ‘”  ÍX ‘”  ÍY ‘”  ÍZ ‘”  Í[ ‘”  Í\ ‘”  Í] ‘”  Í^ ‘”  Í_ ‘”  Í` ‘”  Ía ‘”  Íb ‘”  Íc ‘”  Íd ‘”  Íe ‘”  Íf ‘”  Íg ‘”  Íh ‘”  Íi ‘”  Íj ‘”  Ík ‘”  Íl ‘”  Ím ‘”  Ín ‘”  Ío ‘”  Íp ‘”  Íq ‘”  Ír ‘”  Ís ‘”  Ít ‘”  Íu ‘”  Ív ‘”  Íw ‘”  Íx ‘”  Íy ‘”  Íz ‘”  Í{ ‘”  Í| ‘”  Í} ‘”  Í~ ‘”  Í ‘”  Í€ ‘”  Í ‘”  Í‚ ‘”  Íƒ ‘”  Í„ ‘”  Í… ‘”  Í† ‘”  Í‡ ‘”  Íˆ ‘”  Í‰ ‘”  ÍŠ ‘”  Í‹ ‘”  ÍŒ ‘”  Í ‘”  ÍŽ ‘”  Í ‘”  Í ‘”  Í‘ ‘”  Í’ ‘”  Í“ ‘”  Í” ‘”  Í• ‘”  Í– ‘”  Í— ‘”  Í˜ ‘”  Í™ ‘”  Íš ‘”  Í› ‘”  Íœ ‘”  Í ‘”  Íž ‘”  ÍŸ ‘”  Í  ‘”  Í¡ ‘”  Í¢ ‘”  Í£ ‘”  Í¤ ‘”  Í¥ ‘”  Í¦ ‘”  Í§ ‘”  Í¨ ‘”  Í© ‘”  Íª ‘”  Í« ‘”  Í¬ ‘”  Í­ ‘”  Í® ‘”  Í¯ ‘”  Í° ‘”  Í± ‘”  Í² ‘”  Í³ ‘”  Í´ ‘”  Íµ ‘”  Í¶ ‘”  Í· ‘”  Í¸ ‘”  Í¹ ‘”  Íº ‘”  Í» ‘”  Í¼ ‘”  Í½ ‘”  Í¾ ‘”  Í¿ ‘”  ÍÀ ‘”  ÍÁ ‘”  ÍÂ ‘”  ÍÃ ‘”  ÍÄ ‘”  ÍÅ ‘”  ÍÆ ‘”  ÍÇ ‘”  ÍÈ ‘”  ÍÉ ‘”  ÍÊ ‘”  ÍË ‘”  ÍÌ ‘”  ÍÍ ‘”  ÍÎ ‘”  ÍÏ ‘”  ÍÐ ‘”  ÍÑ ‘”  ÍÒ ‘”  ÍÓ ‘”  ÍÔ ‘”  ÍÕ ‘”  ÍÖ ‘”  Í× ‘”  ÍØ ‘”  ÍÙ ‘”  ÍÚ ‘”  ÍÛ ‘”  ÍÜ ‘”  ÍÝ ‘”  ÍÞ ‘”  Íß ‘”  Íà ‘”  Íá ‘”  Íâ ‘”  Íã ‘”  Íä ‘”  Íå ‘”  Íæ ‘”  Íç ‘”  Íè ‘”  Íé ‘”  Íê ‘”  Íë ‘”  Íì ‘”  Íí ‘”  Íî ‘”  Íï ‘”  Íð ‘”  Íñ ‘”  Íò ‘”  Íó ‘”  Íô ‘”  Íõ ‘”  Íö ‘”  Í÷ ‘”  Íø ‘”  Íù ‘”  Íú ‘”  Íû ‘”  Íü ‘”  Íý ‘”  Íþ ‘”  Íÿ ‘”  Í  ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í	 ‘”  Í
+ ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í ‘”  Í  ‘”  Í! ‘”  Í" ‘”  Í# ‘”  Í$ ‘”  Í% ‘”  Í& ‘”  Í' ‘”  Í( ‘”  Í) ‘”  Í* ‘”  Í+ ‘”  Í, ‘”  Í- ‘”  Í. ‘”  Í/ ‘”  Í0 ‘”  Í1 ‘”  Í2 ‘”  Í3 ‘”  Í4 ‘”  Í5 ‘”  Í6 ‘”  Í7 ‘”  Í8 ‘”  Í9 ‘”  Í: ‘”  Í; ‘”  Í< ‘”  Í= ‘”  Í> ‘”  Í? ‘”  Í@ ‘”  ÍA ‘”  ÍB ‘”  ÍC ‘”  ÍD ‘”  ÍE ‘”  ÍF ‘”  ÍG ‘”  ÍH ‘”  ÍI ‘”  ÍJ ‘”  ÍK ‘”  ÍL ‘”  ÍM ‘”  ÍN ‘”  ÍO ‘”  ÍP ‘”  ÍQ ‘”  ÍR ‘”  ÍS ‘”  ÍT ‘”  ÍU ‘”  ÍV ‘”  ÍW ‘”  ÍX ‘”  ÍY ‘”  ÍZ ‘”  Í[ ‘”  Í\ ‘”  Í] ‘”  Í^ ‘”  Í_ ‘”  Í` ‘”  Ía ‘”  Íb ‘”  Íc ‘”  Íd ‘”  Íe ‘”  Íf ‘”  Íg ‘”  Íh ÔrH’§missing¦pluginÃ¦genAbcÂÔ  ÔrI”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache’ÔrJ•¤type¥start£endªspecifiers¦source±ImportDeclarationÍ0Í]‘ÔrK•¤type¥start£end¨imported¥local¯ImportSpecifierÍ9ÍAÔrL”¤type¥start£end¤nameªIdentifierÍ9ÍA¨SettingsLªIdentifierÍ9ÍA¨SettingsÔrM•¤type¥start£end¥value£raw§LiteralÍIÍ\±../model/Settings³'../model/Settings'J±ImportDeclarationÍ_Í˜‘K¯ImportSpecifierÍhÍvLªIdentifierÍhÍv®ResponsiveUtilLªIdentifierÍhÍv®ResponsiveUtilM§LiteralÍ~Í—·../utils/ResponsiveUtil¹'../utils/ResponsiveUtil'
